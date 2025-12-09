@@ -8,3 +8,4 @@ createRoot(document.getElementById('root')).render(
     <App />
 
 )
+// https://the-trivia-api.com/v2/questions
