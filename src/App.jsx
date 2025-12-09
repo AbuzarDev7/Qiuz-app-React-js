@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import shuffleArray from "shuffle-array";
+import { Bounce, toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css'
 const App = () => {
   const [questions, setQuestions] = useState([]);
@@ -23,8 +25,22 @@ const App = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <h2>Loading...</h2>;
-  if (error) return <h2>Something went wrong</h2>;
+  if (loading) return <div className=" h-[80vh] flex justify-center items-center"><span className="loading loading-dots loading-xl"></span></div>;
+  if (error) return  <div><ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+         toastClassName="custom-toast"
+  bodyClassName="custom-toast-body"
+      /></div>;
 
   if (result) {
     return (
